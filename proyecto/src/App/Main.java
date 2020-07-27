@@ -7,20 +7,18 @@ public class Main{
     static Scanner in = new Scanner(System.in);
     static char [] pal1;
     static char [] pal2;
-    static String match, aux;
+    static String match, ADN1, ADN2;
     
-    public static void main(String[] args) {
+    public Main () {
         
-        String ADN1, ADN2;
-        
-        int menor;
-        
-        System.out.print("Ingrese 1r ADN: ");
-        ADN1 = in.next();
+    }
+    
+    public void setADNs(String ADN1, String ADN2){
+        this.ADN1 = ADN1;
         pal1 = ADN1.toCharArray();
-        System.out.print("Ingrese 2o ADN: ");
-        ADN2 = in.next();
+        this.ADN2 = ADN2;
         pal2 = ADN2.toCharArray();
+        int menor;
         
         menor = calcularPalabraMenor(ADN1,ADN2);//para ver cuál comparará
         
@@ -33,7 +31,7 @@ public class Main{
     /**
      * Este metodo nos devuelve cual palabra es menor en longitud
      */
-    private static int calcularPalabraMenor(String t1, String t2){
+    public static int calcularPalabraMenor(String t1, String t2){
         if(t1.length() < t2.length())
             return 1;
         else if (t1.length() > t2.length())
@@ -80,17 +78,9 @@ public class Main{
             }
             pos++;
         }while(coincidencia == false && continuar == true);
-        System.out.println("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-        System.out.println("COINCIDENCIA MAYOR: " + temporal);
         
-    }
-
-    private static void compP3(String p1, String p2) {
-        if(p1.equalsIgnoreCase(p2)){
-            System.out.println("Son identicos");
-        }else{
-        }
-    
+        Main.match = temporal;
+        
     }
 
     private static void compP2() {
@@ -128,7 +118,11 @@ public class Main{
             }
             pos++;
         }while(coincidencia == false && continuar == true);
-        System.out.println("\n\n|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||");
-        System.out.println("COINCIDENCIA MAYOR: " + temporal);
+        
+        Main.match = temporal;
+    }
+    
+    public String getPalabra(){
+        return Main.match;
     }
 }
